@@ -1,0 +1,12 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection string, see https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING
+  url: <%= ENV.fetch("DATABASE_URL") { "postgres://localhost/myapp" } %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+
+test:
+  <<: *default
